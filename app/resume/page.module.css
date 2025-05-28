@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+.resumeSection {
+  width: 100%;
+  padding: 3rem 0;
+}
+
+.resumeHeader {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.backButton,
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.backButton {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.backButton:hover {
+  background-color: var(--bg-secondary);
+}
+
+.downloadButton {
+  background-color: var(--primary);
+  color: white;
+}
+
+.downloadButton:hover {
+  background-color: var(--primary-dark);
+}
+
+.resumeContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.objective {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .backButton,
+  .downloadButton {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ghostButton,
+.outlineButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.ghostButton:hover,
+.outlineButton:hover {
+  transform: translateY(-2px);
+}
+
+.ghostButton {
+  background-color: transparent;
+}
+
+.ghostButton:hover {
+  background-color: var(--bg-secondary);
+}
+
+.outlineButton {
+  border: 1px solid var(--border);
+}
+
+.outlineButton:hover {
+  background-color: var(--bg-secondary);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.label {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* When labels are shown, adjust the button style */
+.container:has(.label) .ghostButton,
+.container:has(.label) .outlineButton {
+  width: auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+

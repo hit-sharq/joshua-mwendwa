@@ -1,0 +1,166 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.projectHeader {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--primary);
+}
+
+.backIcon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+}
+
+.projectContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.imageContainer {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.projectDetails {
+  padding: 0 1rem;
+}
+
+.linksContainer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  background-color: var(--primary);
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.linkButton:hover {
+  background-color: var(--primary-dark);
+}
+
+.linkButton:nth-child(2) {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.linkButton:nth-child(2):hover {
+  background-color: var(--bg-secondary);
+}
+
+.linkIcon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.techList,
+.featureList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.techList li {
+  background-color: var(--bg-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.featureList {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.featureList li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.featureList li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding: 3rem 2rem;
+  }
+
+  .projectDetails {
+    padding: 0;
+  }
+}
+
