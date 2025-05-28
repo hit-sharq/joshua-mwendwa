@@ -81,8 +81,8 @@ export default function Home() {
                 description="Personal Portfolio & Resume"
                 image="/images/portfolio-website.png"
                 details="A responsive portfolio website built with Next.js and CSS modules to showcase my projects, skills, and experience. Features dark mode support and a clean, modern design."
-                codeUrl="https://github.com/hit-sharq/my-resume"
-                demoUrl="https://my-resume-six-ochre.vercel.app/"
+                codeUrl="https://github.com/hit-sharq/joshua-mwendwa"
+                demoUrl="https://vercel.com/joshua-mathias-projects/joshua-mwendwa"
                 slug="portfolio-website"
               />
               <ProjectCard

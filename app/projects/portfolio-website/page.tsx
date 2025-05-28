@@ -33,7 +33,7 @@ export default function PortfolioWebsitePage() {
           <div className={styles.projectDetails}>
             <div className={styles.linksContainer}>
               <Link
-                href="https://github.com/hit-sharq/my-resume"
+                href="https://github.com/hit-sharq/joshua-mwendwa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.linkButton}
@@ -41,7 +41,7 @@ export default function PortfolioWebsitePage() {
                 <Github className={styles.linkIcon} />
                 View Code
               </Link>
-              <Link href="https://my-resume-six-ochre.vercel.app/" className={styles.linkButton}>
+              <Link href="https://vercel.com/joshua-mathias-projects/joshua-mwendwa" className={styles.linkButton}>
                 <ExternalLink className={styles.linkIcon} />
                 Live Demo
               </Link>
