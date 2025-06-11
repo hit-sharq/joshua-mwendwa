@@ -10,36 +10,61 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 9999px;
-  transition: all 0.2s ease;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.ghostButton::before,
+.outlineButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .ghostButton:hover,
 .outlineButton:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: var(--shadow-lg);
 }
 
-.ghostButton {
-  background-color: transparent;
-}
-
-.ghostButton:hover {
-  background-color: var(--bg-secondary);
+.ghostButton:hover::before,
+.outlineButton:hover::before {
+  opacity: 1;
 }
 
 .outlineButton {
-  border: 1px solid var(--border);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .outlineButton:hover {
-  background-color: var(--bg-secondary);
+  border-color: transparent;
 }
 
 .icon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.ghostButton:hover .icon,
+.outlineButton:hover .icon {
+  color: white;
+  transform: scale(1.1);
 }
 
 .srOnly {
@@ -55,15 +80,65 @@
 }
 
 .label {
-  margin-left: 0.5rem;
-  font-size: 0.875rem;
+  margin-left: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
 }
 
 /* When labels are shown, adjust the button style */
 .container:has(.label) .ghostButton,
 .container:has(.label) .outlineButton {
   width: auto;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
+.container:has(.label) .outlineButton {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Individual social platform colors */
+.githubButton:hover::before {
+  background: linear-gradient(135deg, #333 0%, #24292e 100%);
+}
+
+.instagramButton:hover::before {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.twitterButton:hover::before {
+  background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+}
+
+.whatsappButton:hover::before {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.emailButton:hover::before {
+  background: linear-gradient(135deg, #ea4335 0%, #d33b2c 100%);
+}
+
+/* Dark mode adjustments */
+.dark .ghostButton,
+.dark .outlineButton {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
+}
+
+.dark .icon {
+  color: var(--text-primary);
+}
+
+.dark .label {
+  color: var(--text-primary);
+}
+
+.dark .ghostButton:hover .icon,
+.dark .outlineButton:hover .icon,
+.dark .ghostButton:hover .label,
+.dark .outlineButton:hover .label {
+  color: white;
+}

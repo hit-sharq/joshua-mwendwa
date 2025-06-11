@@ -1,129 +1,300 @@
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 0.5rem;
+  border-radius: 20px;
   border: 1px solid var(--card-border);
-  background-color: var(--card-bg);
+  background: var(--card-bg);
   overflow: hidden;
   height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+.card:hover::before {
+  opacity: 0.05;
 }
 
 .cardHeader {
-  padding: 1.5rem 1.5rem 0.75rem;
+  padding: 2rem 2rem 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .cardTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.card:hover .cardTitle {
+  color: var(--primary);
 }
 
 .cardDescription {
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-bottom: 0;
+  line-height: 1.5;
 }
 
 .cardContent {
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 2;
 }
 
 .imageContainer {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  border-radius: 0.375rem;
-  margin-bottom: 1rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
   position: relative;
   display: block;
+  background: var(--bg-secondary);
+}
+
+.imageContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--primary), var(--primary-light));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .imageContainer::after {
+  opacity: 0.1;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .details {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  flex-grow: 1;
 }
 
 .detailsText {
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   margin-bottom: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .cardFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
+  padding: 2rem;
   margin-top: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .externalLinks {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .iconLink {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
-  background-color: var(--bg-secondary);
+  background: var(--bg-secondary);
   color: var(--text-primary);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.iconLink::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .iconLink:hover {
-  background-color: var(--primary);
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.iconLink:hover::before {
+  opacity: 1;
+}
+
+.iconLink:hover .icon {
   color: white;
+  transform: scale(1.1);
 }
 
 .icon {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .detailsLink {
   display: flex;
   align-items: center;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--primary);
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  background: rgba(37, 99, 235, 0.1);
 }
 
 .detailsLink:hover {
-  color: var(--primary-dark);
+  background: var(--primary);
+  color: white;
+  transform: translateX(5px);
 }
 
 .arrowIcon {
   width: 1rem;
   height: 1rem;
-  margin-left: 0.25rem;
-  transition: transform 0.2s ease;
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
 }
 
 .detailsLink:hover .arrowIcon {
   transform: translateX(3px);
 }
 
+/* Tech Stack Pills */
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.techPill {
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.techPill:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Loading State */
+.card.loading {
+  pointer-events: none;
+}
+
+.card.loading .image {
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cardHeader,
+  .cardContent,
+  .cardFooter {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .cardHeader {
+    padding-top: 1.5rem;
+  }
+
+  .cardFooter {
+    padding-bottom: 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .detailsLink {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Dark mode adjustments */
+.dark .card {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+.dark .iconLink {
+  background: var(--bg-tertiary);
+}
+
+.dark .techPill {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+}
+
+.dark .detailsLink {
+  background: rgba(59, 130, 246, 0.1);
+}

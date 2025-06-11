@@ -22,7 +22,7 @@ export default function PortfolioWebsitePage() {
         <div className={styles.projectContent}>
           <div className={styles.imageContainer}>
             <Image
-              src="/images/portfolio-website.png"
+              src="/images/favicon.ico"
               alt="Portfolio Website"
               width={1200}
               height={800}
@@ -41,7 +41,7 @@ export default function PortfolioWebsitePage() {
                 <Github className={styles.linkIcon} />
                 View Code
               </Link>
-              <Link href="https://vercel.com/joshua-mathias-projects/joshua-mwendwa" className={styles.linkButton}>
+              <Link href="https://learning-platform-client-alpha.vercel.app/" className={styles.linkButton}>
                 <ExternalLink className={styles.linkIcon} />
                 Live Demo
               </Link>

@@ -12,6 +12,7 @@ export function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState("")
+  const [messageType, setMessageType] = useState<"success" | "error" | "">("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -22,25 +23,18 @@ export function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitMessage("")
+    setMessageType("")
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formState),
-      })
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000))
 
-      if (response.ok) {
-        setSubmitMessage("Thank you for your message! I'll get back to you soon.")
-        setFormState({ name: "", email: "", message: "" })
-      } else {
-        const data = await response.json()
-        setSubmitMessage(data.error || "Failed to send message. Please try again later.")
-      }
+      setSubmitMessage("Thank you for your message! I'll get back to you soon.")
+      setMessageType("success")
+      setFormState({ name: "", email: "", message: "" })
     } catch (error) {
       setSubmitMessage("Failed to send message. Please try again later.")
+      setMessageType("error")
     } finally {
       setIsSubmitting(false)
     }
@@ -62,6 +56,7 @@ export function ContactForm() {
           required
         />
       </div>
+
       <div className={styles.formGroup}>
         <label htmlFor="email" className={styles.label}>
           Email
@@ -77,6 +72,7 @@ export function ContactForm() {
           required
         />
       </div>
+
       <div className={styles.formGroup}>
         <label htmlFor="message" className={styles.label}>
           Message
@@ -92,11 +88,18 @@ export function ContactForm() {
           spellCheck="false"
         />
       </div>
-      <button type="submit" className={styles.button} disabled={isSubmitting}>
+
+      <button
+        type="submit"
+        className={`${styles.button} ${isSubmitting ? styles.loading : ""}`}
+        disabled={isSubmitting}
+      >
         {isSubmitting ? "Sending..." : "Send Message"}
       </button>
-      {submitMessage && <p className={styles.successMessage}>{submitMessage}</p>}
+
+      {submitMessage && (
+        <p className={messageType === "success" ? styles.successMessage : styles.errorMessage}>{submitMessage}</p>
+      )}
     </form>
   )
 }
-

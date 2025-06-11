@@ -11,32 +11,75 @@ interface ProjectCardProps {
   codeUrl: string
   demoUrl: string
   slug?: string
+  technologies?: string[]
 }
 
-export function ProjectCard({ title, description, image, details, codeUrl, demoUrl, slug }: ProjectCardProps) {
+export function ProjectCard({
+  title,
+  description,
+  image,
+  details,
+  codeUrl,
+  demoUrl,
+  slug,
+  technologies = [],
+}: ProjectCardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
         <h3 className={styles.cardTitle}>{title}</h3>
         <p className={styles.cardDescription}>{description}</p>
       </div>
+
       <div className={styles.cardContent}>
         <Link href={slug ? `/projects/${slug}` : "#"} className={styles.imageContainer}>
-          <Image src={image || "/placeholder.svg"} alt={title} width={600} height={400} className={styles.image} />
+          <Image
+            src={image || "/placeholder.svg"}
+            alt={title}
+            width={600}
+            height={400}
+            className={styles.image}
+            loading="lazy"
+          />
         </Link>
+
         <div className={styles.details}>
           <p className={styles.detailsText}>{details}</p>
+
+          {technologies.length > 0 && (
+            <div className={styles.techStack}>
+              {technologies.map((tech, index) => (
+                <span key={index} className={styles.techPill}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
+
       <div className={styles.cardFooter}>
         <div className={styles.externalLinks}>
-          <Link href={codeUrl} target="_blank" rel="noopener noreferrer" className={styles.iconLink}>
+          <Link
+            href={codeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.iconLink}
+            aria-label={`View ${title} source code`}
+          >
             <Github className={styles.icon} />
           </Link>
-          <Link href={demoUrl} target="_blank" rel="noopener noreferrer" className={styles.iconLink}>
+          <Link
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.iconLink}
+            aria-label={`View ${title} live demo`}
+          >
             <ExternalLink className={styles.icon} />
           </Link>
         </div>
+
         {slug && (
           <Link href={`/projects/${slug}`} className={styles.detailsLink}>
             View Details
@@ -47,4 +90,3 @@ export function ProjectCard({ title, description, image, details, codeUrl, demoU
     </div>
   )
 }
-

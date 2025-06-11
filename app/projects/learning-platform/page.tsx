@@ -33,7 +33,7 @@ export default function LearningPlatformPage() {
           <div className={styles.projectDetails}>
             <div className={styles.linksContainer}>
               <Link
-                href="https://github.com/hit-sharq/learning-platform-client"
+                href="https://github.com/hit-sharq/learning-platform-server"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.linkButton}

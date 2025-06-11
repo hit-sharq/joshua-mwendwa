@@ -11,34 +11,54 @@ interface SocialLinksProps {
 export function SocialLinks({ className = "", variant = "default", showLabels = false }: SocialLinksProps) {
   const buttonClass = variant === "outline" ? styles.outlineButton : styles.ghostButton
 
+  const socialLinks = [
+    {
+      href: "https://github.com/hit-sharq",
+      icon: Github,
+      label: "GitHub",
+      className: styles.githubButton,
+    },
+    {
+      href: "https://www.instagram.com/j_lee087",
+      icon: Instagram,
+      label: "Instagram",
+      className: styles.instagramButton,
+    },
+    {
+      href: "https://twitter.com/j_l_e_e087",
+      icon: Twitter,
+      label: "Twitter/X",
+      className: styles.twitterButton,
+    },
+    {
+      href: "https://wa.me/+25492687584",
+      icon: Phone,
+      label: "WhatsApp",
+      className: styles.whatsappButton,
+    },
+    {
+      href: "mailto:officialjoshuamwendwa@gmail.com",
+      icon: Mail,
+      label: "Email",
+      className: styles.emailButton,
+    },
+  ]
+
   return (
     <div className={`${styles.container} ${className}`}>
-      <Link href="https://github.com/hit-sharq" target="_blank" rel="noopener noreferrer" className={buttonClass}>
-        <Github className={styles.icon} />
-        {showLabels && <span className={styles.label}>GitHub</span>}
-        {!showLabels && <span className={styles.srOnly}>GitHub</span>}
-      </Link>
-      <Link href="https://www.instagram.com/j_lee087" target="_blank" rel="noopener noreferrer" className={buttonClass}>
-        <Instagram className={styles.icon} />
-        {showLabels && <span className={styles.label}>Instagram</span>}
-        {!showLabels && <span className={styles.srOnly}>Instagram</span>}
-      </Link>
-      <Link href="https://twitter.com/j_l_e_e087" target="_blank" rel="noopener noreferrer" className={buttonClass}>
-        <Twitter className={styles.icon} />
-        {showLabels && <span className={styles.label}>Twitter/X</span>}
-        {!showLabels && <span className={styles.srOnly}>Twitter/X</span>}
-      </Link>
-      <Link href="https://wa.me/+25492687584" target="_blank" rel="noopener noreferrer" className={buttonClass}>
-        <Phone className={styles.icon} />
-        {showLabels && <span className={styles.label}>WhatsApp</span>}
-        {!showLabels && <span className={styles.srOnly}>WhatsApp</span>}
-      </Link>
-      <Link href="mailto:officialjoshuamwendwa@gmail.com" className={buttonClass}>
-        <Mail className={styles.icon} />
-        {showLabels && <span className={styles.label}>Email</span>}
-        {!showLabels && <span className={styles.srOnly}>Email</span>}
-      </Link>
+      {socialLinks.map((link, index) => (
+        <Link
+          key={index}
+          href={link.href}
+          target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+          rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+          className={`${buttonClass} ${link.className}`}
+        >
+          <link.icon className={styles.icon} />
+          {showLabels && <span className={styles.label}>{link.label}</span>}
+          {!showLabels && <span className={styles.srOnly}>{link.label}</span>}
+        </Link>
+      ))}
     </div>
   )
 }
-
